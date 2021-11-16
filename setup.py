@@ -12,6 +12,10 @@ def _read(fname: str) -> str:
 
 base_packages = [
     "numpy==1.21.3",
+    "pandas==1.3.4",
+    "seaborn==0.11.2",
+    "matplotlib==3.4.3",
+    "networkx==2.6.3",
 ]
 
 dev_packages = [

@@ -1,4 +1,6 @@
 """Preprocessing functions."""
+import re
+
 import pandas as pd
 
 
@@ -21,7 +23,7 @@ def helpful_processing(x: str):
     if begin > -1:
         return x[begin + 1 : end]
     else:
-        return None
+        return 0
 
 
 def funny_processing(x: str):
@@ -48,7 +50,26 @@ def items_processing(data: pd.DataFrame):
     data = data.drop_duplicates(subset="id")
     data = data.dropna(subset=["id", "app_name"])
     data.sentiment = data.sentiment.apply(sentiment_process)
+    data.id = data.id.astype(float)
+    data = data.rename(columns={"id": "item_id"})
+    data.price = data.price.apply(find_price)
+    data.price = data.price.astype(float)
     return data
+
+
+def find_price(x: str):
+    """Find price with regex."""
+    regex = r"[\d]+(\.)?[\d]+"
+    if x is None:
+        return 0.0
+    else:
+        matches = re.finditer(regex, x, re.MULTILINE)
+        for _, match in enumerate(matches, start=1):
+            if type(x[match.start() : match.end()]) == str:
+                return x[match.start() : match.end()]
+            else:
+                return 0.0
+    return 0.0
 
 
 def users_processing(data: pd.DataFrame):

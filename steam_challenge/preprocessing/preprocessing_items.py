@@ -7,7 +7,7 @@ from datetime import datetime
 import pandas as pd
 
 
-def sentiment_process(x: str):
+def sentiment_preprocess(x: str):
     """Tweak the 'sentiment' feature."""
     if x is None:
         return 0
@@ -38,16 +38,18 @@ def to_date(x: str):
     """Convert string to date."""
     try:
         return datetime.strptime(x, "%Y-%m-%d")
+    except TypeError:
+        return None
     except ValueError:
         return None
 
 
-def items_processing(data: pd.DataFrame):
+def items_preprocessing(data: pd.DataFrame):
     """Process the 'items' dataset."""
     data = data.drop(
         columns=["url", "reviews_url", "title", "discount_price", "metascore", "publisher"]
     )
-    data.sentiment = data.sentiment.apply(sentiment_process)
+    data.sentiment = data.sentiment.apply(sentiment_preprocess)
     data = data.drop_duplicates(subset="id")
     data = data.dropna(subset=["id", "app_name"])
     data.id = data.id.astype(int)
@@ -58,5 +60,6 @@ def items_processing(data: pd.DataFrame):
     items_sorted_date = data.sort_values("release_date").dropna()
     median_date = items_sorted_date.release_date.iloc[round(len(items_sorted_date) / 2)]
     data.release_date = data.release_date.fillna(median_date)
-    data.developer.fillna("Unknown")
+    data.developer = data.developer.fillna("Unknown")
+    data.early_access = data.early_access.astype(int)
     return data

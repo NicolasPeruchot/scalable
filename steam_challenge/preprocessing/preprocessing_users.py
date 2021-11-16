@@ -2,7 +2,7 @@
 import pandas as pd
 
 
-def users_processing(data: pd.DataFrame):
+def users_preprocessing(data: pd.DataFrame):
     """Process the 'users' dataset."""
     data = data.drop_duplicates()
     data = data.reset_index(drop=True)

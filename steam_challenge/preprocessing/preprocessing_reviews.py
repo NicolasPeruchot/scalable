@@ -3,7 +3,7 @@
 import pandas as pd
 
 
-def helpful_processing(x: str):
+def helpful_preprocessing(x: str):
     """Tweak the 'helpful' feature."""
     begin = x.find("(")
     end = x.find("%")
@@ -13,7 +13,7 @@ def helpful_processing(x: str):
         return 0
 
 
-def funny_processing(x: str):
+def funny_preprocessing(x: str):
     """Tweak the 'funny' feature."""
     end = x.find("p")
     if end > -1:
@@ -22,11 +22,11 @@ def funny_processing(x: str):
         return 0
 
 
-def reviews_processing(data: pd.DataFrame):
+def reviews_preprocessing(data: pd.DataFrame):
     """Process the 'reviews' dataset."""
     data = data.drop(columns=["review", "posted", "last_edited"])
-    data.helpful = data.helpful.apply(helpful_processing)
-    data.funny = data.funny.apply(funny_processing)
+    data.helpful = data.helpful.apply(helpful_preprocessing)
+    data.funny = data.funny.apply(funny_preprocessing)
     data = data.drop_duplicates()
     data = data.reset_index(drop=True)
     return data

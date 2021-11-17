@@ -37,7 +37,7 @@ def recommender_games(root_id: int, G: nx.classes.graph.Graph, items: pd.DataFra
     j = 0
     while j < n:
         ID = distance_sorted[i][0].item_id
-        name = items[items.id == ID].app_name.values
+        name = items[items.item_id == ID].app_name.values
         if name:
             recommendations.append(name[0])
             j += 1

@@ -45,7 +45,7 @@ def to_date(x: str):
 
 
 def items_preprocessing(data: pd.DataFrame):
-    """Process the 'items' dataset."""
+    """Process the 'items' dataset by applying all the transformations."""
     data = data.drop(
         columns=["url", "reviews_url", "title", "discount_price", "metascore", "publisher"]
     )

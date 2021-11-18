@@ -16,6 +16,7 @@ base_packages = [
     "seaborn==0.11.2",
     "matplotlib==3.4.3",
     "networkx==2.6.3",
+    "scikit-learn==1.0.1",
 ]
 
 dev_packages = [

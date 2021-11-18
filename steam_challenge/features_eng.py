@@ -10,7 +10,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 
 def transform_feature(data: pd.DataFrame, feature: str):
-    """Feature engineering for the items dataset."""
+    """Feature engineering for the items dataset, creating columns for categorical features."""
     all_types = set()
     for i in range(len(data)):
         if data.iloc[i][feature] is not None:
@@ -54,15 +54,13 @@ def dataset_creation(reviews: pd.DataFrame, users: pd.DataFrame, items: pd.DataF
     dataset = pd.merge(items, pd.merge(pd.merge(dataset, time_per_user), time_per_game))
     dataset = pd.merge(items, dataset)
     dataset["ind"] = "Game: " + dataset["app_name"] + ", User: " + dataset["user_id"]
-    Y = dataset.recommend
     dataset = dataset.set_index("ind")
-    dataset = dataset.drop(columns=["user_id", "item_id", "app_name", "recommend"])
-    Y.index = dataset.index
-    return (dataset, Y)
+    dataset = dataset.drop(columns=["item_id"])
+    return dataset
 
 
 def features_creation(data: pd.DataFrame):
-    """Feature engineering."""
+    """Feature engineering for second supervised model."""
     for feature in ["genres", "specs", "tags"]:
         data = transform_feature(data=data, feature=feature)
     le = LabelEncoder()

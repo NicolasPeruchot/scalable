@@ -1,10 +1,2 @@
-cookie:
-	mv * .pre-commit-config.yaml .gitignore ../
-	cd ..; make develop
-
-develop:
-	pip install -e '.[dev]'
-	pre-commit install
-
-setup-tests:
-	pip install -e '.[test]'
+install:
+	python -m pip install -r requirements.txt

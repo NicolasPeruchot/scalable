@@ -23,7 +23,7 @@ def funny_preprocessing(x: str):
 
 
 def reviews_preprocessing(data: pd.DataFrame):
-    """Process the 'reviews' dataset."""
+    """Process the 'reviews' dataset by applying all transformations."""
     data = data.drop(columns=["review", "posted", "last_edited"])
     data.helpful = data.helpful.apply(helpful_preprocessing)
     data.funny = data.funny.apply(funny_preprocessing)

@@ -1,5 +1,9 @@
 # Scalable coding challenge
 
+### __Nicolas Peruchot__
+
+
+
 ## Installation
 
     make install
@@ -9,7 +13,7 @@
 The different parts of the assignement are displayed in notebooks. The rest of the code can be found in the `steam_challenge` folder.
 ## Thoughts
 
-The preprocessing part was interesting as the dataset was split in three different parts. Then, I wasn't sure about the first prediction task, so I made a supervised classifier. For the last part, it was interesting to use graph data science for a recommender system.
+The preprocessing part was interesting as the dataset was split in three different parts. Then, I wasn't sure about the first prediction task, so I made a simple supervised classifier. For the last part, it was interesting to use graph data science for a recommender system, and the results seem coherent.
 ## Suggestions for improvement
 
 
@@ -21,12 +25,12 @@ For the part 1:
 
 For the part 2.2:
 
-- Take care of the fact the dataset was unbalanced (with _imbalanced-learn_)
+- Take care of the fact that the dataset is unbalanced (with _imbalanced-learn_)
 - Perform NLP analysis on the _review_ feature (with _spaCy_ or _HuggingFace_)
 - More complex models (with _scikit-learn_ or _pytorch_)
 - Better hyperparameters optimization (with _Optuna_ or _Ray_)
 - Model registry to keep track of different models and hyperparameters (with _MLFlow_)
-- Take care of the time with the *release_date* feature (with _sktime_ or _darts_)
+- Take care of the time dependency with the *release_date* feature (with _sktime_ or _darts_)
 
 For the part 2.1:
 

@@ -8,7 +8,7 @@ from steam_challenge.graph_recommender.utils import recommender_games, recommend
 def plot_result_games(
     G: nx.classes.graph.Graph, data: pd.DataFrame, item_id: int = 48190, top: int = 5
 ):
-    """Gives result for game based recommendation."""
+    """Show result for game based recommendation."""
     root_game = data[data.item_id == item_id].app_name.values[0]
     print(f"{top} recommendation(s) for: {root_game}:")
     print("\n")
@@ -20,7 +20,7 @@ def plot_result_games(
 def plot_result_users(
     G: nx.classes.graph.Graph, data: pd.DataFrame, root_user: int = "Beave-", top: int = 5
 ):
-    """Gives result for user based recommendation."""
+    """Show result for user based recommendation."""
     recommendation, owned_games = recommender_users(root_user=root_user, G=G, n=top, data=data)
     for x in owned_games:
         print("Owned: " + data[data.item_id == x].app_name.values[0])

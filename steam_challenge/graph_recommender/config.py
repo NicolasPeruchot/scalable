@@ -1,4 +1,4 @@
-"""Config file for graphs."""
+"""Config file for graphs, with different kind of nodes."""
 
 from collections import namedtuple
 

@@ -11,7 +11,7 @@ def plot_sns(data: pd.DataFrame, feature: str, hue: str):
 
 
 def get_dup(data: pd.DataFrame):
-    """Frequence od duplicated rows."""
+    """Frequence of duplicated rows."""
     dup = round(data.duplicated().sum() / len(data), 2)
     return f"Frequence of duplicated rows: \n{dup}"
 

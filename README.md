@@ -1,6 +1,6 @@
 # Scalable coding challenge
 
-### __Nicolas Peruchot__
+This repo is a coding challenge made during a recruitment process.
 
 
 
@@ -11,9 +11,7 @@
 ## Summary
 
 The different parts of the assignement are displayed in notebooks. The rest of the code can be found in the `steam_challenge` folder.
-## Thoughts
 
-The preprocessing part was interesting as the dataset was split in three different parts. Then, I wasn't sure about the first prediction task, so I made a simple supervised classifier. For the last part, it was interesting to use graph data science for a recommender system, and the results seem coherent.
 ## Suggestions for improvement
 
 
